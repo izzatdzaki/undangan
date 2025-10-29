@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, Instagram, MessageCircle, Music } from 'lucide-react';
 
 const Footer = ({ couple, wedding }) => {
   return (
@@ -16,9 +16,40 @@ const Footer = ({ couple, wedding }) => {
         <h3 className="font-serif text-4xl mb-2">
           {couple.bride} & {couple.groom}
         </h3>
-        
+
         {/* Wedding date */}
         <p className="text-amber-300 font-light text-lg mb-8">{wedding.date}</p>
+
+        {/* Social Media Links */}
+        <div className="flex justify-center gap-6 mb-8">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+            aria-label="Instagram"
+          >
+            <Instagram className="w-6 h-6" />
+          </a>
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+            aria-label="WhatsApp"
+          >
+            <MessageCircle className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.tiktok.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+            aria-label="TikTok"
+          >
+            <Music className="w-6 h-6" />
+          </a>
+        </div>
 
         {/* Quote */}
         <p className="text-gray-300 italic mb-8 max-w-2xl mx-auto">

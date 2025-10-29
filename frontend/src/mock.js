@@ -1,14 +1,14 @@
 export const weddingData = {
   couple: {
-    bride: "Sarah",
-    groom: "Michael",
+    bride: "Putri",
+    groom: "Iteng",
     fullNames: {
-      bride: "Sarah Elizabeth Johnson",
-      groom: "Michael James Anderson"
+      bride: "Putri Rizky Amalia S.P.",
+      groom: "Muhammad iteng rosyidi S.P."
     }
   },
   wedding: {
-    date: "June 15, 2025",
+    date: "December 27th, 2025",
     time: "4:00 PM",
     venue: {
       name: "The Grand Estate",
@@ -19,67 +19,53 @@ export const weddingData = {
   },
   story: {
     title: "Our Love Story",
-    content: "We met on a beautiful autumn day in 2019 at a coffee shop downtown. What started as a chance encounter turned into endless conversations, shared dreams, and a love that grew stronger with each passing day. Five years later, we're ready to begin our forever together."
+    content: "Kami bertemu di suatu hari musim gugur yang indah di tahun 2019 di sebuah kedai kopi di pusat kota. Pertemuan yang awalnya tak disengaja itu berubah menjadi percakapan tanpa akhir, mimpi bersama, dan cinta yang semakin kuat setiap harinya. Lima tahun kemudian, kami siap memulai kebersamaan selamanya."
   },
   events: [
     {
       id: 1,
-      title: "Ceremony",
-      time: "4:00 PM",
-      location: "The Garden Pavilion",
-      description: "Join us as we exchange our vows in the beautiful garden setting"
+      title: "Akad Nikah",
+      time: "09:00 WIB",
+      location: "Masjid Al-Ikhlas, Jl. Raya Cileunyi No. 123, Bandung",
+      description: "Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara akad nikah kami"
     },
     {
       id: 2,
-      title: "Cocktail Hour",
-      time: "5:30 PM",
-      location: "Terrace Garden",
-      description: "Enjoy refreshments and hors d'oeuvres while we take photos"
-    },
-    {
-      id: 3,
-      title: "Reception",
-      time: "6:30 PM",
-      location: "The Crystal Ballroom",
-      description: "Dinner, dancing, and celebration under the stars"
-    },
-    {
-      id: 4,
-      title: "Send Off",
-      time: "11:00 PM",
-      location: "Main Entrance",
-      description: "Sparkler send-off for the newlyweds"
+      title: "Resepsi",
+      time: "11:00 - 14:00 WIB",
+      location: "Gedung Serbaguna Cileunyi, Jl. Raya Cileunyi No. 125, Bandung",
+      description: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu"
     }
   ],
   gallery: [
     {
       id: 1,
-      url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
+      url: "/foto/20251026_214415008.jpg",
       alt: "Couple walking"
     },
     {
       id: 2,
-      url: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800",
+      url: "/foto/20251026_220950183.jpg",
       alt: "Wedding rings"
     },
     {
       id: 3,
-      url: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800",
+      url: "/foto/20251026_223315106.jpg",
       alt: "Engagement photo"
     },
     {
       id: 4,
-      url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
+      url: "/foto/20251026_223110562.jpg",
       alt: "Romantic moment"
     },
     {
       id: 5,
-      url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800",
+      url: "/foto/DSCF0087.jpg",
       alt: "Couple laughing"
     },
     {
       id: 6,
-      url: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800",
+      url: "/foto/20251027_101948015.jpg",
       alt: "Wedding bouquet"
     }
   ]

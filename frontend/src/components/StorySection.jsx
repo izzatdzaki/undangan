@@ -1,27 +1,29 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
+import { SundaDivider, SundaCornerOrnament, SundaBatikPattern } from './SundaOrnaments';
 
 const StorySection = ({ story, couple }) => {
   return (
-    <section id="story" className="py-20 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
+    <section id="story" className="py-20 px-6 bg-white relative overflow-hidden">
+      {/* Batik Pattern Background */}
+      <SundaBatikPattern />
+      
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400"></div>
-            <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-400"></div>
-          </div>
+          <SundaDivider className="mb-6" />
           <h2 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4">{story.title}</h2>
         </div>
 
         {/* Story content */}
         <div className="bg-gradient-to-br from-amber-50 to-rose-50 rounded-3xl p-12 md:p-16 shadow-xl relative overflow-hidden">
-          {/* Decorative corner */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-200/30 to-transparent rounded-bl-full"></div>
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-rose-200/30 to-transparent rounded-tr-full"></div>
+          {/* Sunda Corner Ornaments */}
+          <SundaCornerOrnament position="top-left" className="opacity-30" />
+          <SundaCornerOrnament position="top-right" className="opacity-30" />
+          <SundaCornerOrnament position="bottom-left" className="opacity-30" />
+          <SundaCornerOrnament position="bottom-right" className="opacity-30" />
           
-          <div className="relative">
+          <div className="relative z-10">
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-light text-center">
               {story.content}
             </p>

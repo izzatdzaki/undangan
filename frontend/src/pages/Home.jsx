@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import CoverPage from '../components/CoverPage';
 import HeroSection from '../components/HeroSection';
 import StorySection from '../components/StorySection';
+import BrideGroom from '../components/BrideGroom';
 import EventTimeline from '../components/EventTimeline';
 import Gallery from '../components/Gallery';
 import RsvpForm from '../components/RsvpForm';
 import LocationSection from '../components/LocationSection';
-import Footer from '../components/Footer';
+import GuestBook from '../components/GuestBook';
+import MusicPlayer from '../components/MusicPlayer';
 import { Toaster } from '../components/ui/sonner';
 import { weddingData } from '../mock';
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isInvitationOpened, setIsInvitationOpened] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,13 +27,19 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleOpenInvitation = () => {
+    setIsInvitationOpened(true);
+  };
+
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Our Story', href: '#story' },
+    { label: 'Bride & Groom', href: '#bride-groom' },
     { label: 'Events', href: '#events' },
     { label: 'Gallery', href: '#gallery' },
-    { label: 'RSVP', href: '#rsvp' },
-    { label: 'Location', href: '#location' }
+    { label: 'Gift', href: '#rsvp' },
+    { label: 'Guest Book', href: '#guestbook' },
+    { label: 'Thank You', href: '#location' }
   ];
 
   const handleNavClick = (href) => {
@@ -42,6 +52,15 @@ const Home = () => {
 
   return (
     <div className="relative">
+      {/* Cover Page */}
+      {!isInvitationOpened && (
+        <CoverPage 
+          couple={weddingData.couple} 
+          onOpen={handleOpenInvitation}
+          guestName="Tamu Undangan"
+        />
+      )}
+
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
@@ -113,14 +132,16 @@ const Home = () => {
       <main>
         <HeroSection couple={weddingData.couple} wedding={weddingData.wedding} />
         <StorySection story={weddingData.story} couple={weddingData.couple} />
+        <BrideGroom couple={weddingData.couple} />
         <EventTimeline events={weddingData.events} />
         <Gallery gallery={weddingData.gallery} />
         <RsvpForm />
-        <LocationSection venue={weddingData.wedding.venue} />
+        <GuestBook />
+        <LocationSection couple={weddingData.couple} />
       </main>
 
-      {/* Footer */}
-      <Footer couple={weddingData.couple} wedding={weddingData.wedding} />
+      {/* Music Player */}
+      {isInvitationOpened && <MusicPlayer autoPlay={true} />}
 
       {/* Toast notifications */}
       <Toaster />
