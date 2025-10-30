@@ -8,22 +8,72 @@ const HeroSection = ({ couple, wedding }) => {
     minutes: 0,
     seconds: 0
   });
+  const [countdownStatus, setCountdownStatus] = useState('counting'); // 'counting', 'finished', 'error'
 
   useEffect(() => {
     setIsVisible(true);
 
     // Calculate countdown
     const calculateTimeLeft = () => {
-      const weddingDate = new Date(wedding.date + ' ' + wedding.time);
-      const now = new Date();
-      const difference = weddingDate - now;
+      try {
+        // Parse wedding date more reliably
+        const dateStr = wedding.date; // "December 27th, 2025"
+        const timeStr = wedding.time; // "9:00 AM"
 
-      if (difference > 0) {
+        // Convert to proper date format
+        const dateParts = dateStr.replace(/th|st|nd|rd/g, '').split(' ');
+        const monthNames = {
+          'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+          'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
+        };
+
+        const month = monthNames[dateParts[0]];
+        const day = parseInt(dateParts[1]);
+        const year = parseInt(dateParts[2]);
+
+        // Parse time
+        const timeParts = timeStr.split(' ');
+        const timeNumbers = timeParts[0].split(':');
+        let hours = parseInt(timeNumbers[0]);
+        const minutes = parseInt(timeNumbers[1]);
+
+        // Convert to 24-hour format
+        if (timeParts[1] === 'PM' && hours !== 12) {
+          hours += 12;
+        } else if (timeParts[1] === 'AM' && hours === 12) {
+          hours = 0;
+        }
+
+        const weddingDate = new Date(year, month, day, hours, minutes, 0, 0);
+        const now = new Date();
+        const difference = weddingDate - now;
+
+        if (difference > 0) {
+          setTimeLeft({
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60)
+          });
+          setCountdownStatus('counting');
+        } else {
+          // Wedding has passed
+          setTimeLeft({
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0
+          });
+          setCountdownStatus('finished');
+        }
+      } catch (error) {
+        console.error('Error calculating countdown:', error);
+        setCountdownStatus('error');
         setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0
         });
       }
     };
@@ -104,6 +154,25 @@ const HeroSection = ({ couple, wedding }) => {
                 Seconds
               </div>
             </div>
+          </div>
+
+          {/* Countdown Status */}
+          <div className="mt-6">
+            {countdownStatus === 'counting' && (
+              <p className="text-lg md:text-xl text-white/90 font-light">
+                Until our special day
+              </p>
+            )}
+            {countdownStatus === 'finished' && (
+              <p className="text-lg md:text-xl text-amber-300 font-medium">
+                🎉 Our wedding day has arrived! 🎉
+              </p>
+            )}
+            {countdownStatus === 'error' && (
+              <p className="text-lg md:text-xl text-red-300 font-medium">
+                Unable to calculate countdown
+              </p>
+            )}
           </div>
         </div>
 

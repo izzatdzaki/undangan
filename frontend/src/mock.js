@@ -9,7 +9,7 @@ export const weddingData = {
   },
   wedding: {
     date: "December 27th, 2025",
-    time: "4:00 PM",
+    time: "9:00 AM",
     venue: {
       name: "The Grand Estate",
       address: "123 Garden Lane, Beverly Hills, CA 90210",

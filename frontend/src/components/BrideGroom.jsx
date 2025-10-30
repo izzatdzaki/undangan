@@ -44,7 +44,14 @@ const BrideGroom = ({ couple }) => {
                 {couple.bride}
               </h3>
               <p className="text-lg text-gray-600 font-light mb-1">The Bride</p>
-              <p className="text-base text-gray-500">{couple.fullNames.bride}</p>
+              <p className="text-base text-gray-500 mb-4">{couple.fullNames.bride}</p>
+              
+              {/* Parents */}
+              <div className="text-sm text-gray-600 space-y-1">
+                <p className="font-medium">Putri dari:</p>
+                <p>Abu Hanipa, SE.</p>
+                <p>Nurlianti, S.Pd.</p>
+              </div>
             </div>
 
             {/* Instagram Button */}
@@ -85,7 +92,14 @@ const BrideGroom = ({ couple }) => {
                 {couple.groom}
               </h3>
               <p className="text-lg text-gray-600 font-light mb-1">The Groom</p>
-              <p className="text-base text-gray-500">{couple.fullNames.groom}</p>
+              <p className="text-base text-gray-500 mb-4">{couple.fullNames.groom}</p>
+              
+              {/* Parents */}
+              <div className="text-sm text-gray-600 space-y-1">
+                <p className="font-medium">Putra dari:</p>
+                <p>Rusdi Achmari</p>
+                <p>Trika Dewi Santi Rodiyah S.Pd</p>
+              </div>
             </div>
 
             {/* Instagram Button */}

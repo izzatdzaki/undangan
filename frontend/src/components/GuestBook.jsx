@@ -1,9 +1,54 @@
 import React, { useState } from 'react';
-import { Heart, User } from 'lucide-react';
+import { Heart, User, Plus, Send, X } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { useToast } from '../hooks/use-toast';
+import { SundaDivider, SundaBatikPattern } from './SundaOrnaments';
 
 const GuestBook = () => {
+  const { toast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    message: ''
+  });
   const messagesPerPage = 3;
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Mohon lengkapi nama dan pesan Anda.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // In a real app, this would send to backend
+    toast({
+      title: "Pesan Terkirim! 🎉",
+      description: "Terima kasih atas ucapan dan doa restu Anda.",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      message: ''
+    });
+    setIsModalOpen(false);
+  };
 
   const guestMessages = [
     {
@@ -55,17 +100,21 @@ const GuestBook = () => {
   const currentMessages = guestMessages.slice(startIndex, startIndex + messagesPerPage);
 
   return (
-    <section id="guestbook" className="py-20 px-6 bg-gradient-to-br from-slate-50 via-white to-rose-50">
-      <div className="max-w-6xl mx-auto">
+    <section id="guestbook" className="py-20 px-6 bg-gradient-to-br from-slate-50 via-white to-rose-50 relative overflow-hidden">
+      {/* Batik Pattern Background */}
+      <SundaBatikPattern />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400"></div>
-            <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-400"></div>
+          <SundaDivider className="mb-6" />
+          <div className="inline-flex items-center justify-center gap-3 mb-6">
+            <Heart className="w-12 h-12 text-rose-500 fill-rose-500" />
           </div>
           <h2 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4">Guest Book</h2>
-          <p className="text-lg text-gray-600 font-light">Share your wishes and blessings</p>
+          <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+            Share your wishes and blessings for our beautiful journey ahead
+          </p>
         </div>
 
         {/* Messages Grid */}
@@ -132,10 +181,79 @@ const GuestBook = () => {
 
         {/* Add Message Button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-            <Heart className="w-5 h-5" />
-            Add Your Message
-          </button>
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                <Plus className="w-6 h-6 mr-2" />
+                Tulis Ucapan
+              </Button>
+            </DialogTrigger>
+
+            <DialogContent className="max-w-md mx-4 bg-white rounded-3xl border-0 shadow-2xl">
+              <DialogHeader className="text-center pb-6">
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-rose-400 rounded-full flex items-center justify-center shadow-lg">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <DialogTitle className="font-serif text-2xl md:text-3xl text-gray-800">
+                  Tulis Ucapan Anda
+                </DialogTitle>
+                <p className="text-gray-600 mt-2">
+                  Bagikan doa dan harapan untuk Putri & Iteng
+                </p>
+              </DialogHeader>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Input */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nama Lengkap *
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="border-gray-300 focus:border-amber-400 focus:ring-amber-400 rounded-xl"
+                    placeholder="Masukkan nama Anda"
+                  />
+                </div>
+
+                {/* Message Input */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Ucapan & Doa *
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="border-gray-300 focus:border-amber-400 focus:ring-amber-400 rounded-xl min-h-32 resize-none"
+                    placeholder="Tulis ucapan, doa, dan harapan untuk kedua mempelai..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white py-4 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Send className="w-5 h-5 mr-2" />
+                  Kirim Ucapan
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
+
+        {/* Divider Bottom */}
+        <div className="mt-16">
+          <SundaDivider />
         </div>
       </div>
     </section>
