@@ -9,6 +9,7 @@ import Gallery from '../components/Gallery';
 import RsvpForm from '../components/RsvpForm';
 import LocationSection from '../components/LocationSection';
 import GuestBook from '../components/GuestBook';
+import GuestManager from '../components/GuestManager';
 import MusicPlayer from '../components/MusicPlayer';
 import { Toaster } from '../components/ui/sonner';
 import { weddingData } from '../mock';
@@ -17,6 +18,8 @@ const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isInvitationOpened, setIsInvitationOpened] = useState(false);
+  const [guestName, setGuestName] = useState('Tamu Undangan');
+  const [isAdminMode, setIsAdminMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,23 @@ const Home = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Get guest name and admin mode from URL parameter
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to');
+    const adminParam = urlParams.get('admin');
+    
+    if (guestParam) {
+      // Decode URL-encoded name and replace underscores with spaces
+      const decodedName = decodeURIComponent(guestParam).replace(/_/g, ' ');
+      setGuestName(decodedName);
+    }
+
+    if (adminParam === 'true') {
+      setIsAdminMode(true);
+    }
   }, []);
 
   const handleOpenInvitation = () => {
@@ -52,99 +72,108 @@ const Home = () => {
 
   return (
     <div className="relative">
-      {/* Cover Page */}
-      {!isInvitationOpened && (
-        <CoverPage 
-          couple={weddingData.couple} 
-          onOpen={handleOpenInvitation}
-          guestName="Tamu Undangan"
-        />
-      )}
-
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo/Brand */}
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#home');
-              }}
-              className="font-serif text-2xl md:text-3xl text-gray-800 hover:text-amber-600 transition-colors duration-300"
-            >
-              {weddingData.couple.bride} & {weddingData.couple.groom}
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-300"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-800 hover:text-amber-600 transition-colors duration-300"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-5 duration-300">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className="block text-gray-700 hover:text-amber-600 font-medium py-2 transition-colors duration-300"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          )}
+      {isAdminMode ? (
+        /* Admin Mode - Guest Manager */
+        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-rose-50">
+          <GuestManager />
         </div>
-      </nav>
+      ) : (
+        <>
+          {/* Cover Page */}
+          {!isInvitationOpened && (
+            <CoverPage 
+              couple={weddingData.couple} 
+              onOpen={handleOpenInvitation}
+              guestName={guestName}
+            />
+          )}
 
-      {/* Main Content */}
-      <main>
-        <HeroSection couple={weddingData.couple} wedding={weddingData.wedding} />
-        <StorySection story={weddingData.story} couple={weddingData.couple} />
-        <BrideGroom couple={weddingData.couple} />
-        <EventTimeline events={weddingData.events} />
-        <Gallery gallery={weddingData.gallery} />
-        <RsvpForm />
-        <GuestBook />
-        <LocationSection couple={weddingData.couple} />
-      </main>
+          {/* Navigation */}
+          <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+            isScrolled 
+              ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+              : 'bg-transparent'
+          }`}>
+            <div className="max-w-7xl mx-auto px-6 py-4">
+              <div className="flex items-center justify-between">
+                {/* Logo/Brand */}
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('#home');
+                  }}
+                  className="font-serif text-2xl md:text-3xl text-gray-800 hover:text-amber-600 transition-colors duration-300"
+                >
+                  {weddingData.couple.bride} & {weddingData.couple.groom}
+                </a>
 
-      {/* Music Player */}
-      {isInvitationOpened && <MusicPlayer autoPlay={true} />}
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex items-center gap-8">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.href);
+                      }}
+                      className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-300"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
 
-      {/* Toast notifications */}
-      <Toaster />
+                {/* Mobile menu button */}
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="md:hidden text-gray-800 hover:text-amber-600 transition-colors duration-300"
+                >
+                  {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+              </div>
+
+              {/* Mobile Navigation */}
+              {isMenuOpen && (
+                <div className="md:hidden mt-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-5 duration-300">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.href);
+                      }}
+                      className="block text-gray-700 hover:text-amber-600 font-medium py-2 transition-colors duration-300"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </nav>
+
+          {/* Main Content */}
+          <main>
+            <HeroSection couple={weddingData.couple} wedding={weddingData.wedding} />
+            <StorySection story={weddingData.story} couple={weddingData.couple} />
+            <BrideGroom couple={weddingData.couple} />
+            <EventTimeline events={weddingData.events} />
+            <Gallery gallery={weddingData.gallery} />
+            <RsvpForm />
+            <GuestBook />
+            <LocationSection couple={weddingData.couple} />
+          </main>
+
+          {/* Music Player */}
+          {isInvitationOpened && <MusicPlayer autoPlay={true} />}
+
+          {/* Toast notifications */}
+          <Toaster />
+        </>
+      )}
     </div>
   );
 };

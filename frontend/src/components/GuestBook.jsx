@@ -17,40 +17,13 @@ const GuestBook = () => {
   });
   const messagesPerPage = 3;
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  // Konfigurasi masa berlaku data (dalam hari)
+  // Ubah nilai ini untuk mengatur berapa lama data disimpan
+  // 0 = selamanya, 7 = 7 hari, 30 = 30 hari, dst
+  const DATA_EXPIRATION_DAYS = 0; // 0 = permanent (selamanya)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.message.trim()) {
-      toast({
-        title: "Error",
-        description: "Mohon lengkapi nama dan pesan Anda.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // In a real app, this would send to backend
-    toast({
-      title: "Pesan Terkirim! 🎉",
-      description: "Terima kasih atas ucapan dan doa restu Anda.",
-    });
-
-    // Reset form
-    setFormData({
-      name: '',
-      message: ''
-    });
-    setIsModalOpen(false);
-  };
-
-  const guestMessages = [
+  // Load guest messages from localStorage on mount
+  const defaultMessages = [
     {
       id: 1,
       name: "Citra Saraswati",
@@ -95,6 +68,83 @@ const GuestBook = () => {
     }
   ];
 
+  const [guestMessages, setGuestMessages] = useState(() => {
+    try {
+      const stored = localStorage.getItem('guestBookMessages');
+      let messages = stored ? JSON.parse(stored) : defaultMessages;
+
+      // Jika ada expiration date, filter pesan yang sudah expired
+      if (DATA_EXPIRATION_DAYS > 0) {
+        messages = messages.filter(msg => {
+          // Pesan default tidak pernah expired
+          const isDefaultMessage = defaultMessages.some(dm => dm.id === msg.id);
+          if (isDefaultMessage) return true;
+
+          // Check jika pesan user sudah melewati batas waktu
+          const messageDate = new Date(msg.date);
+          const expirationDate = new Date(messageDate.getTime() + (DATA_EXPIRATION_DAYS * 24 * 60 * 60 * 1000));
+          return new Date() < expirationDate;
+        });
+
+        // Update localStorage dengan pesan yang tidak expired
+        localStorage.setItem('guestBookMessages', JSON.stringify(messages));
+      }
+
+      return messages;
+    } catch (error) {
+      console.error('Error loading messages:', error);
+      return defaultMessages;
+    }
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Mohon lengkapi nama dan pesan Anda.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Create new message object
+    const newMessage = {
+      id: Date.now(),
+      name: formData.name,
+      message: formData.message,
+      avatar: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSI4IiByPSI0IiBmaWxsPSIjOWNhM2FmIi8+CjxwYXRoIGQ9Ik0yMCAyMWE4IDggMCAwIDAtMTYtMCIgZmlsbD0iIzlhYTNmZiIvPgo8L3N2Zz4=',
+      date: new Date().toISOString().split('T')[0]
+    };
+
+    // Add new message to the beginning
+    const updatedMessages = [newMessage, ...guestMessages];
+    setGuestMessages(updatedMessages);
+
+    // Save to localStorage
+    localStorage.setItem('guestBookMessages', JSON.stringify(updatedMessages));
+
+    toast({
+      title: "Pesan Terkirim! 🎉",
+      description: "Terima kasih atas ucapan dan doa restu Anda.",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      message: ''
+    });
+    setIsModalOpen(false);
+  };
+
   const totalPages = Math.ceil(guestMessages.length / messagesPerPage);
   const startIndex = (currentPage - 1) * messagesPerPage;
   const currentMessages = guestMessages.slice(startIndex, startIndex + messagesPerPage);
@@ -118,11 +168,11 @@ const GuestBook = () => {
         </div>
 
         {/* Messages Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {currentMessages.map((message) => (
-            <div key={message.id} className="bg-white rounded-2xl p-6 shadow-lg border border-amber-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-200">
+            <div key={message.id} className="bg-white rounded-2xl p-5 shadow-lg border border-amber-100 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-200 flex-shrink-0">
                   <img
                     src={message.avatar}
                     alt={message.name}
@@ -132,12 +182,12 @@ const GuestBook = () => {
                     }}
                   />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">{message.name}</h4>
-                  <p className="text-sm text-gray-500">{message.date}</p>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-gray-800 truncate">{message.name}</h4>
+                  <p className="text-xs text-gray-500">{message.date}</p>
                 </div>
               </div>
-              <p className="text-gray-700 leading-relaxed italic">"{message.message}"</p>
+              <p className="text-gray-700 leading-relaxed italic text-sm line-clamp-3">"{message.message}"</p>
             </div>
           ))}
         </div>
@@ -200,7 +250,7 @@ const GuestBook = () => {
                   Tulis Ucapan Anda
                 </DialogTitle>
                 <p className="text-gray-600 mt-2">
-                  Bagikan doa dan harapan untuk Putri & Iteng
+                  Bagikan doa dan harapan untuk Putri & Fajar
                 </p>
               </DialogHeader>
 

@@ -13,23 +13,24 @@ const RsvpForm = () => {
 
   const bankAccounts = [
     {
-      bank: 'Bank BCA',
-      accountNumber: '1234567890',
-      accountName: 'Putri Sundari',
+      bank: 'Bank Syariah Indonesia',
+      accountNumber: '8377774180',
+      accountName: 'PUTRI RIZKI AMALIA',
       logo: '🏦'
+
     },
     {
       bank: 'Bank Mandiri',
-      accountNumber: '0987654321',
-      accountName: 'Iteng Permana',
+      accountNumber: '1620010448326',
+      accountName: 'MUHAMMAD FAJAR ROSYIDI',
       logo: '🏦'
     }
   ];
 
   const shippingAddress = {
-    recipient: 'Putri & Iteng',
-    address: 'Jl. Contoh Alamat No. 123, Bandung, Jawa Barat 40123',
-    phone: '+62 812-3456-7890'
+    recipient: 'Putri & Fajar',
+    address: 'Jl. A.Yani. lr segar No.7 Korumba, Mandonga, Kota Kendari, Sulawesi Tenggara 93117',
+    phone: '+62 812-4406-2757'
   };
 
   const copyToClipboard = (accountNumber, index) => {
