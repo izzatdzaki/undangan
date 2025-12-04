@@ -11,16 +11,22 @@ const HeroSection = ({ couple, wedding }) => {
   });
   const [countdownStatus, setCountdownStatus] = useState('counting'); // 'counting', 'finished', 'error'
 
-  // Preload image
+  // Preload image dengan optimasi cepat
   useEffect(() => {
+    // Set image loaded immediately (langsung tampil gambar tanpa menunggu)
+    setImageLoaded(true);
+    
+    // Preload image di background untuk performa
     const img = new Image();
     img.src = '/foto/20251026_223444317.jpg';
+    
+    // Optional: log untuk debugging
     img.onload = () => {
-      setImageLoaded(true);
+      console.log('Image preloaded successfully');
     };
+    
     img.onerror = () => {
-      // Fallback to black background if image fails to load
-      setImageLoaded(true);
+      console.log('Image preload failed, using fallback gradient');
     };
   }, []);
 
@@ -111,7 +117,7 @@ const HeroSection = ({ couple, wedding }) => {
   }, [wedding.date, wedding.time]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black">
       {/* Skeleton/Placeholder Background */}
       {!imageLoaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse"></div>
@@ -119,19 +125,25 @@ const HeroSection = ({ couple, wedding }) => {
       
       {/* Background Image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           backgroundImage: `url('/foto/20251026_223444317.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: 'fixed',
+          willChange: 'opacity'
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50"></div>
       </div>
+
+      {/* Fallback gradient if image fails to load */}
+      {!imageLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900 via-gray-900 to-black"></div>
+      )}
 
       <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Wedding Announcement */}
@@ -156,7 +168,7 @@ const HeroSection = ({ couple, wedding }) => {
         </div>
 
         {/* Countdown Timer */}
-        <div className="mb-20">
+        <div className="mb-32">
           <div className="grid grid-cols-4 gap-2 md:gap-3 max-w-xl mx-auto">
             <div className="bg-white/10 backdrop-blur-md rounded-lg px-2 py-3 md:px-4 md:py-4 border border-white/20">
               <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
