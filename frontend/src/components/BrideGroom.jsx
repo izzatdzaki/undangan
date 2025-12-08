@@ -19,15 +19,15 @@ const BrideGroom = ({ couple }) => {
         {/* Bride & Groom Grid */}
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* The Bride */}
-          <div className="text-center">
-            <div className="relative inline-block mb-6">
+          <div className="text-center animate-fade-in-up delay-200">
+            <div className="relative inline-block mb-6 group">
               {/* Sunda Flower Ornament */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 animate-spin-slow">
                 <SundaFlowerOrnament className="w-12 h-12 opacity-60" />
               </div>
               
               {/* Photo */}
-              <div className="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl">
+              <div className="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-105">
                 <img
                   src="/foto/20251027_101948015.jpg"
                   alt={couple.fullNames.bride}
@@ -35,11 +35,11 @@ const BrideGroom = ({ couple }) => {
                 />
               </div>
               {/* Decorative ring */}
-              <div className="absolute -inset-4 border-2 border-cyan-300 rounded-full opacity-30"></div>
+              <div className="absolute -inset-4 border-2 border-cyan-300 rounded-full opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             </div>
 
             {/* Name & Details */}
-            <div className="mb-6">
+            <div className="mb-6 animate-fade-in-up delay-300">
               <h3 className="font-serif text-4xl md:text-5xl text-gray-800 mb-2">
                 {couple.bride}
               </h3>
@@ -59,23 +59,23 @@ const BrideGroom = ({ couple }) => {
               href={couple.social?.bride || "https://www.instagram.com/"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:gap-3 animate-fade-in-up delay-400"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 transition-transform duration-300" />
               <span className="font-medium">Follow Instagram</span>
             </a>
           </div>
 
           {/* The Groom */}
-          <div className="text-center">
-            <div className="relative inline-block mb-6">
+          <div className="text-center animate-fade-in-up delay-400">
+            <div className="relative inline-block mb-6 group">
               {/* Sunda Flower Ornament */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 animate-spin-slow">
                 <SundaFlowerOrnament className="w-12 h-12 opacity-60" />
               </div>
               
               {/* Photo */}
-              <div className="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl">
+              <div className="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-105">
                 <img
                   src="/foto/20251026_214415008.jpg"
                   alt={couple.fullNames.groom}
@@ -83,11 +83,11 @@ const BrideGroom = ({ couple }) => {
                 />
               </div>
               {/* Decorative ring */}
-              <div className="absolute -inset-4 border-2 border-blue-300 rounded-full opacity-30"></div>
+              <div className="absolute -inset-4 border-2 border-blue-300 rounded-full opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             </div>
 
             {/* Name & Details */}
-            <div className="mb-6">
+            <div className="mb-6 animate-fade-in-up delay-500">
               <h3 className="font-serif text-4xl md:text-5xl text-gray-800 mb-2">
                 {couple.groom}
               </h3>
@@ -107,17 +107,17 @@ const BrideGroom = ({ couple }) => {
               href={couple.social?.groom || "https://www.instagram.com/"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:gap-3 animate-fade-in-up delay-600"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 transition-transform duration-300" />
               <span className="font-medium">Follow Instagram</span>
             </a>
           </div>
         </div>
 
         {/* Love Quote */}
-        <div className="text-center mt-16 max-w-2xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100">
+        <div className="text-center mt-16 max-w-2xl mx-auto animate-fade-in-up delay-700">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:bg-white/90 transition-all duration-300">
             <Heart className="w-8 h-8 text-cyan-500 fill-cyan-500 mx-auto mb-4" />
             <p className="text-gray-700 italic text-lg leading-relaxed">
               "Mugia rumahtanggana sing langgeng, pinuh ku kabagjaan jeung kaharmonisan."
