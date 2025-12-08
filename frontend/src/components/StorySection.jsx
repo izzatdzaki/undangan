@@ -29,12 +29,12 @@ const StorySection = ({ story, couple }) => {
             </p>
             
             {/* Couple initials */}
-            <div className="mt-12 flex justify-center items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center">
+            <div className="mt-12 flex justify-center items-center gap-4 animate-fade-in-up delay-500">
+              <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 transition-transform duration-300">
                 <span className="font-serif text-2xl text-blue-600">{couple.bride[0]}</span>
               </div>
               <Heart className="w-6 h-6 text-cyan-500 fill-cyan-500 animate-pulse" />
-              <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 transition-transform duration-300">
                 <span className="font-serif text-2xl text-blue-600">{couple.groom[0]}</span>
               </div>
             </div>
