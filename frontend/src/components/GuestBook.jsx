@@ -150,7 +150,7 @@ const GuestBook = () => {
   const currentMessages = guestMessages.slice(startIndex, startIndex + messagesPerPage);
 
   return (
-    <section id="guestbook" className="py-20 px-6 bg-gradient-to-br from-slate-50 via-white to-rose-50 relative overflow-hidden">
+    <section id="guestbook" className="py-20 px-6 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
       {/* Batik Pattern Background */}
       <SundaBatikPattern />
 
@@ -159,7 +159,7 @@ const GuestBook = () => {
         <div className="text-center mb-16">
           <SundaDivider className="mb-6" />
           <div className="inline-flex items-center justify-center gap-3 mb-6">
-            <Heart className="w-12 h-12 text-rose-500 fill-rose-500" />
+            <Heart className="w-12 h-12 text-blue-500 fill-blue-500" />
           </div>
           <h2 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4">Guest Book</h2>
           <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
@@ -170,9 +170,9 @@ const GuestBook = () => {
         {/* Messages Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {currentMessages.map((message) => (
-            <div key={message.id} className="bg-white rounded-2xl p-5 shadow-lg border border-amber-100 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+            <div key={message.id} className="bg-white rounded-2xl p-5 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 flex flex-col">
               <div className="flex items-start gap-3 mb-4">
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-200 flex-shrink-0">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-200 flex-shrink-0">
                   <img
                     src={message.avatar}
                     alt={message.name}
@@ -198,7 +198,7 @@ const GuestBook = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-white rounded-lg shadow border border-amber-200 hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
+              className="px-4 py-2 bg-white rounded-lg shadow border border-blue-200 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
             >
               Previous
             </button>
@@ -210,8 +210,8 @@ const GuestBook = () => {
                   onClick={() => setCurrentPage(page)}
                   className={`px-3 py-2 rounded-lg border transition-colors duration-300 ${
                     currentPage === page
-                      ? 'bg-amber-500 text-white border-amber-500'
-                      : 'bg-white text-gray-700 border-amber-200 hover:bg-amber-50'
+                      ? 'bg-blue-500 text-white border-blue-500'
+                      : 'bg-white text-gray-700 border-blue-200 hover:bg-blue-50'
                   }`}
                 >
                   {page}
@@ -222,7 +222,7 @@ const GuestBook = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 bg-white rounded-lg shadow border border-amber-200 hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
+              className="px-4 py-2 bg-white rounded-lg shadow border border-blue-200 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
             >
               Next
             </button>
@@ -233,7 +233,7 @@ const GuestBook = () => {
         <div className="text-center mt-12">
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                 <Plus className="w-6 h-6 mr-2" />
                 Tulis Ucapan
               </Button>
@@ -242,7 +242,7 @@ const GuestBook = () => {
             <DialogContent className="max-w-md mx-4 bg-white rounded-3xl border-0 shadow-2xl">
               <DialogHeader className="text-center pb-6">
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-rose-400 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center shadow-lg">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -267,7 +267,7 @@ const GuestBook = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="border-gray-300 focus:border-amber-400 focus:ring-amber-400 rounded-xl"
+                    className="border-gray-300 focus:border-blue-400 focus:ring-blue-400 rounded-xl"
                     placeholder="Masukkan nama Anda"
                   />
                 </div>
@@ -283,7 +283,7 @@ const GuestBook = () => {
                     required
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="border-gray-300 focus:border-amber-400 focus:ring-amber-400 rounded-xl min-h-32 resize-none"
+                    className="border-gray-300 focus:border-blue-400 focus:ring-blue-400 rounded-xl min-h-32 resize-none"
                     placeholder="Tulis ucapan, doa, dan harapan untuk kedua mempelai..."
                   />
                 </div>
@@ -291,7 +291,7 @@ const GuestBook = () => {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white py-4 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-4 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Kirim Ucapan

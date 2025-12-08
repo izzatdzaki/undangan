@@ -74,7 +74,7 @@ const Home = () => {
     <div className="relative">
       {isAdminMode ? (
         /* Admin Mode - Guest Manager */
-        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-rose-50">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
           <GuestManager />
         </div>
       ) : (
@@ -103,7 +103,7 @@ const Home = () => {
                     e.preventDefault();
                     handleNavClick('#home');
                   }}
-                  className="font-serif text-2xl md:text-3xl text-gray-800 hover:text-amber-600 transition-colors duration-300"
+                  className="font-serif text-2xl md:text-3xl text-gray-800 hover:text-blue-600 transition-colors duration-300"
                 >
                   {weddingData.couple.bride} & {weddingData.couple.groom}
                 </a>
@@ -118,7 +118,7 @@ const Home = () => {
                         e.preventDefault();
                         handleNavClick(item.href);
                       }}
-                      className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-300"
+                      className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
                     >
                       {item.label}
                     </a>
@@ -128,7 +128,7 @@ const Home = () => {
                 {/* Mobile menu button */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden text-gray-800 hover:text-amber-600 transition-colors duration-300"
+                  className="md:hidden text-gray-800 hover:text-blue-600 transition-colors duration-300"
                 >
                   {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
@@ -145,7 +145,7 @@ const Home = () => {
                         e.preventDefault();
                         handleNavClick(item.href);
                       }}
-                      className="block text-gray-700 hover:text-amber-600 font-medium py-2 transition-colors duration-300"
+                      className="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
                     >
                       {item.label}
                     </a>

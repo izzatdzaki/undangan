@@ -97,7 +97,7 @@ Wassalamualaikum Wr. Wb.
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <div className="text-center">
         <div className="inline-flex items-center justify-center gap-3 mb-6">
-          <Users className="w-12 h-12 text-amber-600" />
+          <Users className="w-12 h-12 text-blue-600" />
         </div>
         <h1 className="font-serif text-4xl md:text-5xl text-gray-800 mb-4">
           Guest Manager
@@ -109,9 +109,9 @@ Wassalamualaikum Wr. Wb.
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Guest List */}
-        <Card className="shadow-lg border-amber-200">
+        <Card className="shadow-lg border-blue-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-amber-700">
+            <CardTitle className="flex items-center gap-2 text-blue-700">
               <Users className="w-5 h-5" />
               Daftar Tamu
             </CardTitle>
@@ -124,7 +124,7 @@ Wassalamualaikum Wr. Wb.
                   onClick={() => setSelectedGuest(guest.name)}
                   className={`w-full text-left p-3 rounded-lg border transition-all duration-200 ${
                     selectedGuest === guest.name
-                      ? 'bg-amber-100 border-amber-400 text-amber-800'
+                      ? 'bg-blue-100 border-blue-400 text-blue-800'
                       : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'
                   }`}
                 >
@@ -136,7 +136,7 @@ Wassalamualaikum Wr. Wb.
             <Button
               onClick={() => generateInvitationLink(selectedGuest)}
               disabled={!selectedGuest}
-              className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white"
+              className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
             >
               Buat Link untuk {selectedGuest || 'Pilih Tamu'}
             </Button>
@@ -144,9 +144,9 @@ Wassalamualaikum Wr. Wb.
         </Card>
 
         {/* Custom Guest */}
-        <Card className="shadow-lg border-rose-200">
+        <Card className="shadow-lg border-cyan-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-rose-700">
+            <CardTitle className="flex items-center gap-2 text-cyan-700">
               <Users className="w-5 h-5" />
               Tamu Custom
             </CardTitle>
@@ -160,14 +160,14 @@ Wassalamualaikum Wr. Wb.
                 value={customGuest}
                 onChange={(e) => setCustomGuest(e.target.value)}
                 placeholder="Masukkan nama tamu..."
-                className="border-gray-300 focus:border-rose-400 focus:ring-rose-400"
+                className="border-gray-300 focus:border-cyan-400 focus:ring-cyan-400"
               />
             </div>
 
             <Button
               onClick={() => generateInvitationLink(customGuest)}
               disabled={!customGuest.trim()}
-              className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
+              className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white"
             >
               Buat Link Custom
             </Button>
@@ -194,7 +194,7 @@ Wassalamualaikum Wr. Wb.
               <Button
                 onClick={copyToClipboard}
                 variant="outline"
-                className="flex-1 border-amber-300 text-amber-700 hover:bg-amber-50"
+                className="flex-1 border-blue-300 text-blue-700 hover:bg-blue-50"
               >
                 <Copy className="w-4 h-4 mr-2" />
                 Salin Link

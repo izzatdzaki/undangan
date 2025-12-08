@@ -4,7 +4,7 @@ import { SundaDivider, SundaFlowerOrnament, SundaBatikPattern } from './SundaOrn
 
 const LocationSection = ({ couple }) => {
   return (
-    <section id="location" className="py-20 px-6 bg-gradient-to-br from-amber-50 via-white to-rose-50 relative overflow-hidden">
+    <section id="location" className="py-20 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden">
       {/* Batik Pattern Background */}
       <SundaBatikPattern />
       
@@ -13,20 +13,20 @@ const LocationSection = ({ couple }) => {
         <div className="text-center mb-16">
           <SundaDivider className="mb-6" />
           <div className="inline-flex items-center justify-center gap-3 mb-6">
-            <Heart className="w-12 h-12 text-rose-500 fill-rose-500" />
+            <Heart className="w-12 h-12 text-cyan-500 fill-cyan-500" />
           </div>
           <h2 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4">Terima Kasih</h2>
           <p className="text-lg text-gray-600 font-light">Thank You</p>
         </div>
 
         {/* Thank You Card */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-amber-200 relative overflow-hidden">
+        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-blue-200 relative overflow-hidden">
           {/* Decorative corners */}
           <div className="absolute top-0 left-0 w-24 h-24 opacity-30">
-            <SundaFlowerOrnament className="w-full h-full text-amber-400" />
+            <SundaFlowerOrnament className="w-full h-full text-blue-400" />
           </div>
           <div className="absolute top-0 right-0 w-24 h-24 opacity-30">
-            <SundaFlowerOrnament className="w-full h-full text-rose-400" />
+            <SundaFlowerOrnament className="w-full h-full text-cyan-400" />
           </div>
           
           <div className="relative z-10">
@@ -34,8 +34,8 @@ const LocationSection = ({ couple }) => {
             <div className="flex justify-center mb-8">
               <div className="relative group">
                 {/* Decorative ring */}
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-rose-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300 scale-110"></div>
-                <div className="absolute inset-0 bg-gradient-to-tl from-amber-300 to-rose-300 rounded-full opacity-10 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300 scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-tl from-blue-300 to-cyan-300 rounded-full opacity-10 animate-pulse"></div>
                 
                 {/* Photo */}
                 <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl">
@@ -48,7 +48,7 @@ const LocationSection = ({ couple }) => {
 
                 {/* Flower ornament on top */}
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                  <SundaFlowerOrnament className="w-12 h-12 text-amber-500" />
+                  <SundaFlowerOrnament className="w-12 h-12 text-blue-500" />
                 </div>
               </div>
             </div>
@@ -70,9 +70,9 @@ const LocationSection = ({ couple }) => {
                     {couple.bride} & {couple.groom}
                   </p>
                   <div className="flex items-center justify-center gap-3 mt-4">
-                    <div className="w-16 h-px bg-gradient-to-r from-transparent to-amber-400"></div>
-                    <Heart className="w-6 h-6 text-rose-500 fill-rose-500" />
-                    <div className="w-16 h-px bg-gradient-to-l from-transparent to-amber-400"></div>
+                    <div className="w-16 h-px bg-gradient-to-r from-transparent to-blue-400"></div>
+                    <Heart className="w-6 h-6 text-cyan-500 fill-cyan-500" />
+                    <div className="w-16 h-px bg-gradient-to-l from-transparent to-blue-400"></div>
                   </div>
                 </div>
               </div>
@@ -84,7 +84,7 @@ const LocationSection = ({ couple }) => {
             <SundaFlowerOrnament className="w-full h-full text-rose-400" />
           </div>
           <div className="absolute bottom-0 right-0 w-24 h-24 opacity-30">
-            <SundaFlowerOrnament className="w-full h-full text-amber-400" />
+            <SundaFlowerOrnament className="w-full h-full text-cyan-400" />
           </div>
         </div>
 

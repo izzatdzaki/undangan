@@ -39,7 +39,7 @@ const Gallery = ({ gallery }) => {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white hover:text-amber-400 transition-colors duration-300"
+            className="absolute top-6 right-6 text-white hover:text-cyan-400 transition-colors duration-300"
             onClick={() => setSelectedImage(null)}
           >
             <X className="w-8 h-8" />

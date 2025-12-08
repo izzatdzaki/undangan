@@ -16,7 +16,7 @@ const StorySection = ({ story, couple }) => {
         </div>
 
         {/* Story content */}
-        <div className="bg-gradient-to-br from-amber-50 to-rose-50 rounded-3xl p-12 md:p-16 shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-12 md:p-16 shadow-xl relative overflow-hidden">
           {/* Sunda Corner Ornaments */}
           <SundaCornerOrnament position="top-left" className="opacity-30" />
           <SundaCornerOrnament position="top-right" className="opacity-30" />
@@ -31,11 +31,11 @@ const StorySection = ({ story, couple }) => {
             {/* Couple initials */}
             <div className="mt-12 flex justify-center items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center">
-                <span className="font-serif text-2xl text-amber-600">{couple.bride[0]}</span>
+                <span className="font-serif text-2xl text-blue-600">{couple.bride[0]}</span>
               </div>
-              <Heart className="w-6 h-6 text-rose-500 fill-rose-500 animate-pulse" />
+              <Heart className="w-6 h-6 text-cyan-500 fill-cyan-500 animate-pulse" />
               <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center">
-                <span className="font-serif text-2xl text-amber-600">{couple.groom[0]}</span>
+                <span className="font-serif text-2xl text-blue-600">{couple.groom[0]}</span>
               </div>
             </div>
           </div>

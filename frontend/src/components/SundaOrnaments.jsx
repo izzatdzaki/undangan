@@ -52,13 +52,13 @@ export const SundaBatikPattern = ({ className = "absolute inset-0 opacity-5" }) 
 
 export const SundaDivider = ({ className = "" }) => (
   <div className={`flex items-center justify-center gap-4 ${className}`}>
-    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent opacity-30"></div>
+    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-30"></div>
     <div className="flex items-center gap-2">
       <SundaOrnament1 className="w-8 h-8" color="#D97706" />
-      <div className="w-2 h-2 rounded-full bg-amber-600 opacity-50"></div>
+      <div className="w-2 h-2 rounded-full bg-blue-600 opacity-50"></div>
       <SundaOrnament1 className="w-8 h-8" color="#D97706" />
     </div>
-    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-amber-600 to-transparent opacity-30"></div>
+    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-blue-600 to-transparent opacity-30"></div>
   </div>
 );
 

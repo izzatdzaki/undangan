@@ -4,7 +4,7 @@ import { SundaDivider, SundaFlowerOrnament, SundaBatikPattern } from './SundaOrn
 
 const BrideGroom = ({ couple }) => {
   return (
-    <section id="bride-groom" className="py-20 px-6 bg-gradient-to-br from-rose-50 via-white to-amber-50 relative overflow-hidden">
+    <section id="bride-groom" className="py-20 px-6 bg-gradient-to-br from-cyan-50 via-white to-blue-50 relative overflow-hidden">
       {/* Batik Pattern Background */}
       <SundaBatikPattern />
       
@@ -35,7 +35,7 @@ const BrideGroom = ({ couple }) => {
                 />
               </div>
               {/* Decorative ring */}
-              <div className="absolute -inset-4 border-2 border-rose-300 rounded-full opacity-30"></div>
+              <div className="absolute -inset-4 border-2 border-cyan-300 rounded-full opacity-30"></div>
             </div>
 
             {/* Name & Details */}
@@ -56,10 +56,10 @@ const BrideGroom = ({ couple }) => {
 
             {/* Instagram Button */}
             <a
-              href="https://www.instagram.com/"
+              href={couple.social?.bride || "https://www.instagram.com/"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Instagram className="w-5 h-5" />
               <span className="font-medium">Follow Instagram</span>
@@ -83,7 +83,7 @@ const BrideGroom = ({ couple }) => {
                 />
               </div>
               {/* Decorative ring */}
-              <div className="absolute -inset-4 border-2 border-amber-300 rounded-full opacity-30"></div>
+              <div className="absolute -inset-4 border-2 border-blue-300 rounded-full opacity-30"></div>
             </div>
 
             {/* Name & Details */}
@@ -104,10 +104,10 @@ const BrideGroom = ({ couple }) => {
 
             {/* Instagram Button */}
             <a
-              href="https://www.instagram.com/"
+              href={couple.social?.groom || "https://www.instagram.com/"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Instagram className="w-5 h-5" />
               <span className="font-medium">Follow Instagram</span>
@@ -117,8 +117,8 @@ const BrideGroom = ({ couple }) => {
 
         {/* Love Quote */}
         <div className="text-center mt-16 max-w-2xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-amber-100">
-            <Heart className="w-8 h-8 text-rose-500 fill-rose-500 mx-auto mb-4" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100">
+            <Heart className="w-8 h-8 text-cyan-500 fill-cyan-500 mx-auto mb-4" />
             <p className="text-gray-700 italic text-lg leading-relaxed">
               "Mugia rumahtanggana sing langgeng, pinuh ku kabagjaan jeung kaharmonisan."
             </p>

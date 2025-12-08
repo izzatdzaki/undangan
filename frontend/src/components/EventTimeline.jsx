@@ -8,7 +8,7 @@ const EventTimeline = ({ events }) => {
   const resepsi = events.find(e => e.title.toLowerCase().includes('resepsi') || e.title.toLowerCase().includes('reception'));
 
   return (
-    <section id="events" className="py-20 px-6 bg-gradient-to-br from-amber-50 via-white to-rose-50 relative overflow-hidden">
+    <section id="events" className="py-20 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden">
       {/* Batik Pattern Background */}
       <SundaBatikPattern />
       
@@ -30,13 +30,13 @@ const EventTimeline = ({ events }) => {
                 <SundaFlowerOrnament className="w-16 h-16 opacity-50" />
               </div>
               
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-amber-200 relative overflow-hidden">
+              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-blue-200 relative overflow-hidden">
                 {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-amber-100 to-transparent rounded-bl-full opacity-50"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full opacity-50"></div>
                 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
                     <Heart className="w-8 h-8 text-white fill-white" />
                   </div>
                   
@@ -47,7 +47,7 @@ const EventTimeline = ({ events }) => {
                   
                   {/* Details */}
                   <div className="space-y-4 mb-6">
-                    <div className="flex items-center justify-center gap-3 text-amber-700">
+                    <div className="flex items-center justify-center gap-3 text-blue-700">
                       <Clock className="w-5 h-5" />
                       <span className="font-semibold text-lg">{akad.time}</span>
                     </div>
@@ -68,7 +68,7 @@ const EventTimeline = ({ events }) => {
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(akad.location)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
                     >
                       <Navigation className="w-5 h-5" />
                       <span>Google Maps</span>
@@ -87,13 +87,13 @@ const EventTimeline = ({ events }) => {
                 <SundaFlowerOrnament className="w-16 h-16 opacity-50" />
               </div>
               
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-rose-200 relative overflow-hidden">
+              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-cyan-200 relative overflow-hidden">
                 {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-rose-100 to-transparent rounded-br-full opacity-50"></div>
+                <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-100 to-transparent rounded-br-full opacity-50"></div>
                 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-rose-400 to-rose-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center shadow-lg">
                     <Heart className="w-8 h-8 text-white fill-white" />
                   </div>
                   
@@ -104,7 +104,7 @@ const EventTimeline = ({ events }) => {
                   
                   {/* Details */}
                   <div className="space-y-4 mb-6">
-                    <div className="flex items-center justify-center gap-3 text-rose-700">
+                    <div className="flex items-center justify-center gap-3 text-cyan-700">
                       <Clock className="w-5 h-5" />
                       <span className="font-semibold text-lg">{resepsi.time}</span>
                     </div>
@@ -125,7 +125,7 @@ const EventTimeline = ({ events }) => {
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(resepsi.location)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
                     >
                       <Navigation className="w-5 h-5" />
                       <span>Google Maps</span>

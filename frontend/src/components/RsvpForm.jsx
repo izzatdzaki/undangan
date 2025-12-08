@@ -61,7 +61,7 @@ const RsvpForm = () => {
   };
 
   return (
-    <section id="rsvp" className="py-20 px-6 bg-gradient-to-br from-amber-50 via-white to-rose-50 relative overflow-hidden">
+    <section id="rsvp" className="py-20 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden">
       {/* Batik Pattern Background */}
       <SundaBatikPattern />
 
@@ -70,7 +70,7 @@ const RsvpForm = () => {
         <div className="text-center mb-16">
           <SundaDivider className="mb-6" />
           <div className="inline-flex items-center justify-center gap-3 mb-6">
-            <Gift className="w-12 h-12 text-amber-600" />
+            <Gift className="w-12 h-12 text-blue-600" />
           </div>
           <h2 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4">Wedding Gift</h2>
           <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto mb-8">
@@ -81,7 +81,7 @@ const RsvpForm = () => {
           {/* Modal Trigger Button */}
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                 <Gift className="w-6 h-6 mr-2" />
                 Lihat Wedding Gift
               </Button>
@@ -90,7 +90,7 @@ const RsvpForm = () => {
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl border-0 shadow-2xl">
               <DialogHeader className="text-center pb-6">
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-rose-400 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center shadow-lg">
                     <Gift className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -114,16 +114,16 @@ const RsvpForm = () => {
                     {bankAccounts.map((account, index) => (
                       <div
                         key={index}
-                        className="bg-gradient-to-br from-amber-50 to-rose-50 rounded-2xl p-6 border-2 border-amber-200 hover:shadow-lg transition-all duration-300"
+                        className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-200 hover:shadow-lg transition-all duration-300"
                       >
                         {/* Bank Icon & Name */}
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg text-2xl">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg text-2xl">
                             {account.logo}
                           </div>
                           <div>
                             <h4 className="font-serif text-xl text-gray-800">{account.bank}</h4>
-                            <p className="text-amber-700 font-medium text-sm">{account.accountName}</p>
+                            <p className="text-blue-700 font-medium text-sm">{account.accountName}</p>
                           </div>
                         </div>
 
@@ -138,7 +138,7 @@ const RsvpForm = () => {
                         {/* Copy Button */}
                         <Button
                           onClick={() => copyToClipboard(account.accountNumber, index)}
-                          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-3 text-sm font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-sm font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                         >
                           {copiedAccount === index ? (
                             <>
@@ -161,23 +161,23 @@ const RsvpForm = () => {
                 <div>
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center gap-2 mb-3">
-                      <div className="w-8 h-px bg-gradient-to-r from-transparent to-rose-400"></div>
-                      <Package className="w-5 h-5 text-rose-600" />
-                      <div className="w-8 h-px bg-gradient-to-l from-transparent to-rose-400"></div>
+                      <div className="w-8 h-px bg-gradient-to-r from-transparent to-cyan-400"></div>
+                      <Package className="w-5 h-5 text-cyan-600" />
+                      <div className="w-8 h-px bg-gradient-to-l from-transparent to-cyan-400"></div>
                     </div>
                     <h3 className="font-serif text-2xl text-gray-800 mb-2">Kirim Hadiah</h3>
                     <p className="text-gray-600 text-sm">Atau kirim hadiah langsung ke alamat kami</p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl p-6 border-2 border-rose-200">
+                  <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-2xl p-6 border-2 border-cyan-200">
                     {/* Address Icon */}
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
+                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h4 className="font-serif text-xl text-gray-800">Alamat Pengiriman</h4>
-                        <p className="text-rose-700 font-medium text-sm">{shippingAddress.recipient}</p>
+                        <p className="text-cyan-700 font-medium text-sm">{shippingAddress.recipient}</p>
                       </div>
                     </div>
 
@@ -200,7 +200,7 @@ const RsvpForm = () => {
                     {/* Copy Button */}
                     <Button
                       onClick={copyAddress}
-                      className="w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white py-3 text-sm font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white py-3 text-sm font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                     >
                       {copiedAddress ? (
                         <>
@@ -218,9 +218,9 @@ const RsvpForm = () => {
                 </div>
 
                 {/* Thank you message */}
-                <div className="text-center pt-6 border-t border-amber-200">
+                <div className="text-center pt-6 border-t border-blue-200">
                   <div className="inline-flex items-center gap-2 mb-4">
-                    <Heart className="w-6 h-6 text-rose-500 fill-rose-500" />
+                    <Heart className="w-6 h-6 text-cyan-500 fill-cyan-500" />
                   </div>
                   <p className="text-gray-700 text-lg font-light italic">
                     Terima kasih atas kehadiran dan doa restu Anda

@@ -219,7 +219,7 @@ Wassalamualaikum Wr. Wb.
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg border border-amber-200">
+    <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-200">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
           <FileSpreadsheet className="w-6 h-6 text-white" />
@@ -237,7 +237,7 @@ Wassalamualaikum Wr. Wb.
           <Button
             onClick={downloadTemplate}
             variant="outline"
-            className="w-full border-amber-300 text-amber-700 hover:bg-amber-50"
+            className="w-full border-blue-300 text-blue-700 hover:bg-blue-50"
           >
             <Download className="w-4 h-4 mr-2" />
             Download Template
@@ -253,11 +253,11 @@ Wassalamualaikum Wr. Wb.
               accept=".xlsx,.xls"
               onChange={importFromExcel}
               disabled={isImporting}
-              className="file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-medium file:bg-amber-500 file:text-white hover:file:bg-amber-600 file:cursor-pointer"
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:cursor-pointer"
             />
             {isImporting && (
               <div className="absolute inset-0 bg-white/80 rounded-lg flex items-center justify-center">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-amber-500"></div>
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
               </div>
             )}
           </div>

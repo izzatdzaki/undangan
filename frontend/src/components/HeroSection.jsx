@@ -142,7 +142,7 @@ const HeroSection = ({ couple, wedding }) => {
 
       {/* Fallback gradient if image fails to load */}
       {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-900 via-gray-900 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-black"></div>
       )}
 
       <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -212,7 +212,7 @@ const HeroSection = ({ couple, wedding }) => {
               </p>
             )}
             {countdownStatus === 'finished' && (
-              <p className="text-lg md:text-xl text-amber-300 font-medium">
+              <p className="text-lg md:text-xl text-blue-300 font-medium">
                 🎉 Our wedding day has arrived! 🎉
               </p>
             )}
