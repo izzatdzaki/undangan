@@ -1,9 +1,12 @@
 {
-  "buildCommand": "npm install && npm run build",
+  "version": 2,
+  "buildCommand": "npm run build",
   "outputDirectory": "build",
   "framework": "create-react-app",
   "rootDirectory": "frontend",
+  "nodeVersion": "18.x",
   "env": {
-    "CI": "false"
+    "CI": "false",
+    "REACT_APP_API_URL": "https://undangan-alpha-snowy.vercel.app"
   }
 }
