@@ -4,5 +4,4 @@ node_modules
 README.md
 src
 public
-craco.config.js
-jsconfig.json
+package-lock.json
