@@ -23,50 +23,7 @@ const GuestBook = () => {
   const DATA_EXPIRATION_DAYS = 0; // 0 = permanent (selamanya)
 
   // Load guest messages from localStorage on mount
-  const defaultMessages = [
-    {
-      id: 1,
-      name: "Citra Saraswati",
-      message: "Barakallah untuk pernikahan ini! Semoga kalian diberikan keturunan yang saleh dan keluarga yang harmonis. Bahagia selalu hingga akhir hayat.",
-      avatar: "/foto/DSCF0087.jpg",
-      date: "2025-10-25"
-    },
-    {
-      id: 2,
-      name: "Steven William",
-      message: "This marriage is a beautiful blessing. May love and prayers accompany your steps forward. Keep loving and appreciating each other.",
-      avatar: "/foto/DSCF0107.jpg",
-      date: "2025-10-24"
-    },
-    {
-      id: 3,
-      name: "Arzi Firmadi",
-      message: "Happy starting a new chapter of life! May your household always be surrounded by love, laughter and happiness. Best wishes for our long journey together.",
-      avatar: "/foto/DSCF0111.jpg",
-      date: "2025-10-23"
-    },
-    {
-      id: 4,
-      name: "Maya Sari",
-      message: "Congratulations on your beautiful wedding! May your love story continue to inspire others and may you always find joy in each other's company.",
-      avatar: "/foto/20251026_214415008.jpg",
-      date: "2025-10-22"
-    },
-    {
-      id: 5,
-      name: "Rizky Pratama",
-      message: "Semoga rumah tangga kalian penuh dengan kebahagiaan, kasih sayang, dan keberkahan. Selamat menempuh hidup baru!",
-      avatar: "/foto/20251026_215444301.jpg",
-      date: "2025-10-21"
-    },
-    {
-      id: 6,
-      name: "Diana Putri",
-      message: "Your wedding is absolutely stunning! Wishing you both a lifetime of love, laughter, and happily ever after.",
-      avatar: "/foto/20251026_220704211.jpg",
-      date: "2025-10-20"
-    }
-  ];
+  const defaultMessages = [];
 
   const [guestMessages, setGuestMessages] = useState(() => {
     try {

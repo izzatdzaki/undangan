@@ -88,69 +88,8 @@ const Home = () => {
             />
           )}
 
-          {/* Navigation - Desktop Top Bar */}
-          <nav className={`hidden md:block fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-            isScrolled 
-              ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-              : 'bg-transparent'
-          }`}>
-            <div className="max-w-7xl mx-auto px-6 py-4">
-              <div className="flex items-center justify-between">
-                {/* Logo/Brand */}
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick('#home');
-                  }}
-                  className="font-serif text-2xl md:text-3xl text-gray-800 hover:text-blue-600 transition-colors duration-300"
-                >
-                  {weddingData.couple.bride} & {weddingData.couple.groom}
-                </a>
-
-                {/* Desktop Navigation */}
-                <div className="flex items-center gap-8">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick(item.href);
-                      }}
-                      className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          {/* Navigation - Mobile Bottom Bar */}
-          {isInvitationOpened && (
-            <nav className="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl">
-              <div className="grid grid-cols-4 gap-1 px-2 py-2">
-                {navItems.slice(0, 4).map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href);
-                    }}
-                    className="px-2 py-2 text-xs text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded font-medium transition-colors duration-200 text-center"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </nav>
-          )}
-
           {/* Main Content */}
-          <main className="pb-20 md:pb-0">
+          <main>
             <HeroSection couple={weddingData.couple} wedding={weddingData.wedding} />
             <StorySection story={weddingData.story} couple={weddingData.couple} />
             <BrideGroom couple={weddingData.couple} />
