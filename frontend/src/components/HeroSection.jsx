@@ -117,17 +117,13 @@ const HeroSection = ({ couple, wedding }) => {
   }, [wedding.date, wedding.time]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('/foto/20251026_223444317.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
-      ></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+      {/* Background Image - using img tag for better mobile support */}
+      <img
+        src="/foto/20251026_223444317.jpg"
+        alt="Wedding background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
       
       {/* Overlay untuk readability - dark gradient */}
       <div className="absolute inset-0 bg-black/40"></div>
