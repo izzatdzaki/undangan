@@ -42,11 +42,18 @@ const Home = () => {
     
     if (guestParam) {
       // Decode URL-encoded name and replace dashes/underscores with spaces
-      const decodedName = decodeURIComponent(guestParam)
+      let decodedName = decodeURIComponent(guestParam)
         .replace(/-/g, ' ')
         .replace(/_/g, ' ')
         .replace(/\s+/g, ' ') // Multiple spaces to single space
         .trim();
+      
+      // Capitalize each word
+      decodedName = decodedName
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+      
       setGuestName(decodedName);
     }
 
