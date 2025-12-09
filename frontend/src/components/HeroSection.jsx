@@ -149,8 +149,8 @@ const HeroSection = ({ couple, wedding }) => {
 
       <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Wedding Announcement */}
-        <div className="mb-8 md:mb-12 mt-8 md:mt-12">
-          <p className="text-xl md:text-2xl text-white font-light mb-3 md:mb-4 tracking-widest">
+        <div className="mb-8 md:mb-12 mt-4 md:mt-8">
+          <p className="text-lg md:text-xl text-white font-light mb-2 md:mb-3 tracking-widest">
             The Wedding of
           </p>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-4 md:mb-6 leading-tight">
@@ -167,7 +167,7 @@ const HeroSection = ({ couple, wedding }) => {
 
         {/* Wedding Date */}
         <div className="mb-4 md:mb-6">
-          <p className="text-xl md:text-2xl text-white font-medium tracking-wider">
+          <p className="text-lg md:text-xl text-white font-medium tracking-wider">
             {wedding.date}
           </p>
         </div>
@@ -176,7 +176,7 @@ const HeroSection = ({ couple, wedding }) => {
         <div className="mb-32">
           <div className="grid grid-cols-4 gap-2 md:gap-3 max-w-xl mx-auto">
             <div className="bg-white/10 backdrop-blur-md rounded-lg px-2 py-3 md:px-4 md:py-4 border border-white/20">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
                 {timeLeft.days}
               </div>
               <div className="text-xs md:text-sm text-white/90 font-medium">
@@ -184,7 +184,7 @@ const HeroSection = ({ couple, wedding }) => {
               </div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-lg px-2 py-3 md:px-4 md:py-4 border border-white/20">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
                 {timeLeft.hours}
               </div>
               <div className="text-xs md:text-sm text-white/90 font-medium">
@@ -192,7 +192,7 @@ const HeroSection = ({ couple, wedding }) => {
               </div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-lg px-2 py-3 md:px-4 md:py-4 border border-white/20">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
                 {timeLeft.minutes}
               </div>
               <div className="text-xs md:text-sm text-white/90 font-medium">
@@ -200,7 +200,7 @@ const HeroSection = ({ couple, wedding }) => {
               </div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-lg px-2 py-3 md:px-4 md:py-4 border border-white/20">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
                 {timeLeft.seconds}
               </div>
               <div className="text-xs md:text-sm text-white/90 font-medium">

@@ -88,8 +88,8 @@ const Home = () => {
             />
           )}
 
-          {/* Navigation */}
-          <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          {/* Navigation - Desktop Top Bar */}
+          <nav className={`hidden md:block fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
             isScrolled 
               ? 'bg-white/95 backdrop-blur-md shadow-lg' 
               : 'bg-transparent'
@@ -109,7 +109,7 @@ const Home = () => {
                 </a>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="flex items-center gap-8">
                   {navItems.map((item) => (
                     <a
                       key={item.href}
@@ -124,19 +124,15 @@ const Home = () => {
                     </a>
                   ))}
                 </div>
-
-                {/* Mobile menu button */}
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden text-gray-800 hover:text-blue-600 transition-colors duration-300"
-                >
-                  {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
               </div>
+            </div>
+          </nav>
 
-              {/* Mobile Navigation */}
-              {isMenuOpen && (
-                <div className="md:hidden mt-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-5 duration-300">
+          {/* Navigation - Mobile Bottom Bar */}
+          {isInvitationOpened && (
+            <nav className="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl">
+              <div className="overflow-x-auto">
+                <div className="flex items-center gap-1 px-2 py-2 min-w-max justify-between">
                   {navItems.map((item) => (
                     <a
                       key={item.href}
@@ -145,18 +141,18 @@ const Home = () => {
                         e.preventDefault();
                         handleNavClick(item.href);
                       }}
-                      className="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                      className="flex-1 px-2 py-2 text-xs whitespace-nowrap text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded font-medium transition-colors duration-200 text-center"
                     >
                       {item.label}
                     </a>
                   ))}
                 </div>
-              )}
-            </div>
-          </nav>
+              </div>
+            </nav>
+          )}
 
           {/* Main Content */}
-          <main>
+          <main className="pb-20 md:pb-0">
             <HeroSection couple={weddingData.couple} wedding={weddingData.wedding} />
             <StorySection story={weddingData.story} couple={weddingData.couple} />
             <BrideGroom couple={weddingData.couple} />

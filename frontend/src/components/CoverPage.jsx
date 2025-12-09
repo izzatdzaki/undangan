@@ -31,21 +31,21 @@ const CoverPage = ({ couple, onOpen, guestName = "Tamu Undangan" }) => {
         </div>
 
         {/* Small title */}
-        <p className="text-lg md:text-xl font-light mb-4 tracking-widest opacity-90">
+        <p className="text-lg md:text-xl font-light mb-2 tracking-widest opacity-90">
           The Wedding of
         </p>
 
         {/* Couple Names */}
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight">
           {couple.bride}
-          <span className="block text-4xl md:text-5xl lg:text-6xl my-4 opacity-90">
+          <span className="block text-4xl md:text-5xl lg:text-6xl my-3 opacity-90">
             &
           </span>
           {couple.groom}
         </h1>
 
         {/* Guest Name */}
-        <div className="mb-8">
+        <div className="mb-8 mt-16">
           <p className="text-lg md:text-xl font-light mb-2 opacity-90">Dear,</p>
           <p className="text-xl md:text-2xl font-medium">{guestName}</p>
         </div>

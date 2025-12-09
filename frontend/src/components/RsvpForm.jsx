@@ -29,7 +29,7 @@ const RsvpForm = () => {
 
   const shippingAddress = {
     recipient: 'Putri & Fajar',
-    address: 'Jl. A.Yani. lr segar No.7 Korumba, Mandonga, Kota Kendari, Sulawesi Tenggara 93117',
+    address: 'Jl. A.Yani. lr segar No.7 Kadia, Pondambea, Kota Kendari, Sulawesi Tenggara 93117',
     phone: '+62 812-4406-2757'
   };
 

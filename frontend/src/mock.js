@@ -88,11 +88,6 @@ export const weddingData = {
       alt: "Couple photo 9"
     },
     {
-      id: 10,
-      url: "/foto/20251026_223444317.jpg",
-      alt: "Couple photo 10"
-    },
-    {
       id: 11,
       url: "/foto/20251026_223532847.jpg",
       alt: "Couple photo 11"
