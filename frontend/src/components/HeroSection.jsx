@@ -163,7 +163,7 @@ const HeroSection = ({ couple, wedding }) => {
         </div>
 
         {/* Spacer - push content down */}
-        <div className="h-16 md:h-20"></div>
+        <div className="h-24 md:h-32"></div>
 
         {/* Wedding Date */}
         <div className="mb-12 md:mb-16">
