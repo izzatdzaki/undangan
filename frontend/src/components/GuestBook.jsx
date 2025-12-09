@@ -27,27 +27,9 @@ const GuestBook = () => {
 
   const [guestMessages, setGuestMessages] = useState(() => {
     try {
-      const stored = localStorage.getItem('guestBookMessages');
-      let messages = stored ? JSON.parse(stored) : defaultMessages;
-
-      // Jika ada expiration date, filter pesan yang sudah expired
-      if (DATA_EXPIRATION_DAYS > 0) {
-        messages = messages.filter(msg => {
-          // Pesan default tidak pernah expired
-          const isDefaultMessage = defaultMessages.some(dm => dm.id === msg.id);
-          if (isDefaultMessage) return true;
-
-          // Check jika pesan user sudah melewati batas waktu
-          const messageDate = new Date(msg.date);
-          const expirationDate = new Date(messageDate.getTime() + (DATA_EXPIRATION_DAYS * 24 * 60 * 60 * 1000));
-          return new Date() < expirationDate;
-        });
-
-        // Update localStorage dengan pesan yang tidak expired
-        localStorage.setItem('guestBookMessages', JSON.stringify(messages));
-      }
-
-      return messages;
+      // Clear localStorage to start fresh
+      localStorage.removeItem('guestBookMessages');
+      return defaultMessages;
     } catch (error) {
       console.error('Error loading messages:', error);
       return defaultMessages;
