@@ -117,33 +117,39 @@ const HeroSection = ({ couple, wedding }) => {
   }, [wedding.date, wedding.time]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black">
-      {/* Skeleton/Placeholder Background */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse"></div>
-      )}
-      
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url('/foto/20251026_223444317.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          willChange: 'opacity'
+          backgroundAttachment: 'fixed'
         }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50"></div>
+      ></div>
+      
+      {/* Overlay untuk readability - dark gradient */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      {/* Animated gradient overlays for depth */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Fallback gradient if image fails to load */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-black"></div>
-      )}
+      {/* Pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      ></div>
+      
+      {/* Overlay gradient for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/20 to-black/40"></div>
 
       <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Wedding Announcement */}
