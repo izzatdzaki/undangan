@@ -10,6 +10,7 @@ import RsvpForm from '../components/RsvpForm';
 import LocationSection from '../components/LocationSection';
 import GuestBook from '../components/GuestBook';
 import GuestManager from '../components/GuestManager';
+import ExcelImporter from '../components/ExcelImporter';
 import MusicPlayer from '../components/MusicPlayer';
 import { Toaster } from '../components/ui/sonner';
 import { weddingData } from '../mock';
@@ -20,6 +21,7 @@ const Home = () => {
   const [isInvitationOpened, setIsInvitationOpened] = useState(false);
   const [guestName, setGuestName] = useState('Tamu Undangan');
   const [isAdminMode, setIsAdminMode] = useState(false);
+  const [isImporterMode, setIsImporterMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +35,27 @@ const Home = () => {
   // Get guest name and admin mode from URL parameter
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const guestParam = urlParams.get('to');
+    // Support both 'to' and 'guest' parameters
+    const guestParam = urlParams.get('to') || urlParams.get('guest');
     const adminParam = urlParams.get('admin');
+    const importerParam = urlParams.get('importer');
     
     if (guestParam) {
-      // Decode URL-encoded name and replace underscores with spaces
-      const decodedName = decodeURIComponent(guestParam).replace(/_/g, ' ');
+      // Decode URL-encoded name and replace dashes/underscores with spaces
+      const decodedName = decodeURIComponent(guestParam)
+        .replace(/-/g, ' ')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ') // Multiple spaces to single space
+        .trim();
       setGuestName(decodedName);
     }
 
     if (adminParam === 'true') {
       setIsAdminMode(true);
+    }
+
+    if (importerParam === 'true') {
+      setIsImporterMode(true);
     }
   }, []);
 
@@ -72,7 +84,10 @@ const Home = () => {
 
   return (
     <div className="relative">
-      {isAdminMode ? (
+      {isImporterMode ? (
+        /* Importer Mode - Excel Importer */
+        <ExcelImporter />
+      ) : isAdminMode ? (
         /* Admin Mode - Guest Manager */
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
           <GuestManager />
