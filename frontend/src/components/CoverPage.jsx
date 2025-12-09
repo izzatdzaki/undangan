@@ -45,7 +45,7 @@ const CoverPage = ({ couple, onOpen, guestName = "Tamu Undangan" }) => {
         </h1>
 
         {/* Guest Name */}
-        <div className="mb-8 mt-16">
+        <div className="mb-8 mt-24">
           <p className="text-lg md:text-xl font-light mb-2 opacity-90">Dear,</p>
           <p className="text-xl md:text-2xl font-medium">{guestName}</p>
         </div>
