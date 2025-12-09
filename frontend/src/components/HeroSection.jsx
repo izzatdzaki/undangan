@@ -149,7 +149,7 @@ const HeroSection = ({ couple, wedding }) => {
 
       <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Wedding Announcement */}
-        <div className="mb-8">
+        <div className="mb-16 md:mb-20">
           <p className="text-xl md:text-2xl text-white font-light mb-6 tracking-widest">
             The Wedding of
           </p>
@@ -162,8 +162,11 @@ const HeroSection = ({ couple, wedding }) => {
           </h1>
         </div>
 
+        {/* Spacer - push content down */}
+        <div className="h-16 md:h-20"></div>
+
         {/* Wedding Date */}
-        <div className="mb-8">
+        <div className="mb-12 md:mb-16">
           <p className="text-xl md:text-2xl text-white font-medium tracking-wider">
             {wedding.date}
           </p>
