@@ -39,10 +39,17 @@ const GuestManager = () => {
       return;
     }
 
-    // Encode nama tamu untuk URL (replace spaces with underscores)
-    const encodedName = encodeURIComponent(guestName.replace(/\s+/g, '_'));
+    // Clean nama untuk URL (hapus spasi, special characters, convert ke lowercase)
+    const cleanName = guestName
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s]/g, '') // Hapus special characters kecuali spasi
+      .replace(/\s+/g, '-') // Ganti spasi dengan dash
+      .replace(/-+/g, '-') // Hapus multiple dashes
+      .replace(/^-|-$/g, ''); // Hapus dash di awal/akhir
+
     const baseUrl = window.location.origin;
-    const invitationLink = `${baseUrl}?to=${encodedName}`;
+    const invitationLink = `${baseUrl}?guest=${encodeURIComponent(cleanName)}`;
 
     setGeneratedLink(invitationLink);
     setSelectedGuest(guestName);
@@ -117,7 +124,7 @@ Wassalamualaikum Wr. Wb.
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="max-h-64 overflow-y-auto space-y-2">
+            <div className="space-y-2">
               {guestList.map((guest, index) => (
                 <button
                   key={guest.id}
@@ -128,7 +135,7 @@ Wassalamualaikum Wr. Wb.
                       : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'
                   }`}
                 >
-                  {guest.name}
+                  {index + 1}. {guest.name}
                 </button>
               ))}
             </div>
@@ -235,6 +242,88 @@ Wassalamualaikum Wr. Wb.
           </p>
         </CardContent>
       </Card>
+
+      {/* Guest List with Individual WhatsApp Buttons */}
+      {guestList.length > 0 && (
+        <Card className="shadow-lg border-green-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-green-700">
+              <MessageCircle className="w-5 h-5" />
+              Kirim Undangan Individual
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {guestList.map((guest, index) => {
+                const guestLink = `${window.location.origin}?guest=${encodeURIComponent(
+                  guest.name
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[^a-z0-9\s]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-|-$/g, '')
+                )}`;
+
+                return (
+                  <div
+                    key={guest.id || index}
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-800">{guest.name}</p>
+                      <p className="text-xs text-gray-500 truncate">{guestLink}</p>
+                    </div>
+                    <div className="flex gap-2 ml-4">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => {
+                          navigator.clipboard.writeText(guestLink);
+                          toast({
+                            title: "Link Disalin! 📋",
+                            description: `Link untuk ${guest.name} telah disalin.`,
+                          });
+                        }}
+                        className="border-blue-300 text-blue-700 hover:bg-blue-50"
+                      >
+                        <Copy className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          const message = `Assalamualaikum Wr. Wb.
+
+Dengan hormat, kami mengundang Bapak/Ibu/Saudara/i *${guest.name}* untuk menghadiri acara pernikahan kami.
+
+Silakan buka link berikut untuk detail acara dan konfirmasi kehadiran:
+${guestLink}
+
+Atas perhatiannya, kami ucapkan terima kasih.
+
+Wassalamualaikum Wr. Wb.
+
+*#UndanganPernikahan #PutriFajar*`;
+                          const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+                          window.open(whatsappUrl, '_blank');
+                          toast({
+                            title: "WhatsApp Dibuka! 📱",
+                            description: `Siap kirim ke ${guest.name}`,
+                          });
+                        }}
+                        className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white"
+                      >
+                        <MessageCircle className="w-4 h-4 mr-1" />
+                        WhatsApp
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Excel Import/Export */}
       <ExcelHandler onImportGuests={handleImportGuests} guestList={guestList} />

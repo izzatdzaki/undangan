@@ -10,14 +10,14 @@ const ExcelHandler = ({ onImportGuests, guestList }) => {
   const [isImporting, setIsImporting] = useState(false);
   const [copiedLink, setCopiedLink] = useState(null);
 
-  // Fungsi untuk generate link undangan
+  // Fungsi untuk generate link undangan (hanya gunakan untuk URL, preserve nama asli terpisah)
   const generateInvitationLink = (guestName) => {
     if (!guestName || typeof guestName !== 'string' || !guestName.trim()) {
       console.error('Invalid guest name:', guestName);
       return `${window.location.origin}?guest=unknown`;
     }
 
-    // Clean nama untuk URL (hapus spasi, special characters)
+    // Clean nama untuk URL (hapus spasi, special characters, convert ke lowercase)
     const cleanName = guestName
       .toLowerCase()
       .trim()

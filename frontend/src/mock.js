@@ -22,7 +22,7 @@ export const weddingData = {
     }
   },
   story: {
-    title: "Kisah Cinta Kami",
+    title: "Kisah Kami",
     content: "Pertemuan berawal dari kelompok praktikum sebagai mahasiswa baru di tahun 2018. kami saling bertukar cerita mengenai perkuliahan. Singkat cerita pertemanan kami terus berjalan hingga salah satu dari kami menyimpan perasaan, namun tahun demi tahun perasaan itu tenggelam dalam hubungan pertemanan (Friendzone). hingga pada 1 januari 2021 kami memutuskan untuk berkomitmen ke jengjang yang lebih serius. Perjalanan 7 tahun pertemanan kami, akhirnya memutuskan untuk hidup bersama sebagai pasangan suami dan istri."
   },
   events: [
