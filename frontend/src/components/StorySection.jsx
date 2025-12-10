@@ -24,7 +24,7 @@ const StorySection = ({ story, couple }) => {
           <SundaCornerOrnament position="bottom-right" className="opacity-30" />
           
           <div className="relative z-10">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-light text-center">
+            <p className="text-sm md:text-base text-gray-700 leading-relaxed font-light text-center">
               {story.content}
             </p>
             
