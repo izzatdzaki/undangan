@@ -62,17 +62,26 @@ const GuestManager = () => {
     const baseUrl = window.location.origin;
     const invitationLink = `${baseUrl}?guest=${encodeURIComponent(cleanName)}`;
 
-    // Simpan mapping antara clean name dan original name (capitalized) ke localStorage
+    // Capitalize original guest name (with special characters intact)
+    const capitalizedOriginalName = guestName
+      .split(/(\s+)/)
+      .map((word, idx) => {
+        if (word.match(/\s+/)) return word;
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join('');
+
+    // Simpan mapping antara clean name dan original name (dengan special characters) ke localStorage
     try {
       const existingMapping = JSON.parse(localStorage.getItem('guestNameMapping') || '{}');
-      existingMapping[cleanName] = capitalizedName;
+      existingMapping[cleanName] = capitalizedOriginalName;
       localStorage.setItem('guestNameMapping', JSON.stringify(existingMapping));
     } catch (error) {
       console.error('Error saving to localStorage:', error);
     }
 
     setGeneratedLink(invitationLink);
-    setSelectedGuest(capitalizedName);
+    setSelectedGuest(capitalizedOriginalName);
 
     toast({
       title: "Link Berhasil Dibuat! 🎉",
