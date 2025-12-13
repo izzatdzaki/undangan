@@ -51,6 +51,15 @@ const GuestManager = () => {
     const baseUrl = window.location.origin;
     const invitationLink = `${baseUrl}?guest=${encodeURIComponent(cleanName)}`;
 
+    // Simpan mapping antara clean name dan original name ke localStorage
+    try {
+      const existingMapping = JSON.parse(localStorage.getItem('guestNameMapping') || '{}');
+      existingMapping[cleanName] = guestName;
+      localStorage.setItem('guestNameMapping', JSON.stringify(existingMapping));
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
+
     setGeneratedLink(invitationLink);
     setSelectedGuest(guestName);
 
