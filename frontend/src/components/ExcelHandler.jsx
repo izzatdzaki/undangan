@@ -100,16 +100,32 @@ const ExcelHandler = ({ onImportGuests, guestList }) => {
       }
 
       // Proses data tamu
-      const importedGuests = jsonData.map((row, index) => ({
-        id: Date.now() + index,
-        name: row[nameColumn]?.toString().trim(),
-        status: 'Belum Dibuka',
-        link: generateInvitationLink(row[nameColumn]?.toString().trim())
-      })).filter(guest => guest.name && guest.name.length > 0);
+      const nameMapping = {}; // Store mapping dari clean name ke original name
+      const importedGuests = jsonData.map((row, index) => {
+        const originalName = row[nameColumn]?.toString().trim();
+        const cleanName = originalName
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+        
+        nameMapping[cleanName] = originalName;
+        
+        return {
+          id: Date.now() + index,
+          name: originalName,
+          status: 'Belum Dibuka',
+          link: generateInvitationLink(originalName)
+        };
+      }).filter(guest => guest.name && guest.name.length > 0);
 
       if (importedGuests.length === 0) {
         throw new Error('Tidak ada data nama yang valid');
       }
+
+      // Store mapping ke sessionStorage untuk lookup di Home.jsx
+      sessionStorage.setItem('guestNameMapping', JSON.stringify(nameMapping));
 
       // Kirim data ke parent component
       onImportGuests(importedGuests);

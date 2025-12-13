@@ -41,14 +41,33 @@ const Home = () => {
     const importerParam = urlParams.get('importer');
     
     if (guestParam) {
-      // Decode URL-encoded name and replace dashes/underscores with spaces
-      const decodedName = decodeURIComponent(guestParam)
-        .replace(/-/g, ' ')
-        .replace(/_/g, ' ')
-        .replace(/\s+/g, ' ') // Multiple spaces to single space
-        .trim();
+      // Clean name dari URL
+      const cleanName = decodeURIComponent(guestParam);
       
-      setGuestName(decodedName);
+      // Cek apakah ada original name di sessionStorage
+      try {
+        const nameMapping = JSON.parse(sessionStorage.getItem('guestNameMapping') || '{}');
+        if (nameMapping[cleanName]) {
+          // Gunakan original name dari mapping
+          setGuestName(nameMapping[cleanName]);
+        } else {
+          // Fallback: replace dashes dengan spaces
+          const decodedName = cleanName
+            .replace(/-/g, ' ')
+            .replace(/_/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+          setGuestName(decodedName);
+        }
+      } catch (error) {
+        console.error('Error loading guest name mapping:', error);
+        const decodedName = cleanName
+          .replace(/-/g, ' ')
+          .replace(/_/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        setGuestName(decodedName);
+      }
     }
 
     if (adminParam === 'true') {
