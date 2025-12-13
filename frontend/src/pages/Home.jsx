@@ -44,9 +44,9 @@ const Home = () => {
       // Clean name dari URL
       const cleanName = decodeURIComponent(guestParam);
       
-      // Cek apakah ada original name di sessionStorage
+      // Cek apakah ada original name di localStorage
       try {
-        const nameMapping = JSON.parse(sessionStorage.getItem('guestNameMapping') || '{}');
+        const nameMapping = JSON.parse(localStorage.getItem('guestNameMapping') || '{}');
         if (nameMapping[cleanName]) {
           // Gunakan original name dari mapping
           setGuestName(nameMapping[cleanName]);

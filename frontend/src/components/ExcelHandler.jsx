@@ -124,8 +124,8 @@ const ExcelHandler = ({ onImportGuests, guestList }) => {
         throw new Error('Tidak ada data nama yang valid');
       }
 
-      // Store mapping ke sessionStorage untuk lookup di Home.jsx
-      sessionStorage.setItem('guestNameMapping', JSON.stringify(nameMapping));
+      // Store mapping ke localStorage untuk lookup di Home.jsx (persistent)
+      localStorage.setItem('guestNameMapping', JSON.stringify(nameMapping));
 
       // Kirim data ke parent component
       onImportGuests(importedGuests);
