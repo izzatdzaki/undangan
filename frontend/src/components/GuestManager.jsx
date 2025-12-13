@@ -39,6 +39,17 @@ const GuestManager = () => {
       return;
     }
 
+    // Capitalize nama untuk display yang lebih baik
+    const capitalizedName = guestName
+      .trim()
+      .split(/(\s+)/)
+      .map((word, idx) => {
+        if (word.match(/\s+/)) return word; // Preserve spaces
+        // Capitalize first letter, keep special chars like comma and periods
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join('');
+
     // Clean nama untuk URL (hapus spasi, special characters, convert ke lowercase)
     const cleanName = guestName
       .toLowerCase()
@@ -51,21 +62,21 @@ const GuestManager = () => {
     const baseUrl = window.location.origin;
     const invitationLink = `${baseUrl}?guest=${encodeURIComponent(cleanName)}`;
 
-    // Simpan mapping antara clean name dan original name ke localStorage
+    // Simpan mapping antara clean name dan original name (capitalized) ke localStorage
     try {
       const existingMapping = JSON.parse(localStorage.getItem('guestNameMapping') || '{}');
-      existingMapping[cleanName] = guestName;
+      existingMapping[cleanName] = capitalizedName;
       localStorage.setItem('guestNameMapping', JSON.stringify(existingMapping));
     } catch (error) {
       console.error('Error saving to localStorage:', error);
     }
 
     setGeneratedLink(invitationLink);
-    setSelectedGuest(guestName);
+    setSelectedGuest(capitalizedName);
 
     toast({
       title: "Link Berhasil Dibuat! 🎉",
-      description: `Link undangan untuk ${guestName} telah dibuat.`,
+      description: `Link undangan untuk ${capitalizedName} telah dibuat.`,
     });
   };
 
