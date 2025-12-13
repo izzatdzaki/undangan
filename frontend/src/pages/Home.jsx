@@ -51,21 +51,35 @@ const Home = () => {
           // Gunakan original name dari mapping
           setGuestName(nameMapping[cleanName]);
         } else {
-          // Fallback: replace dashes dengan spaces
-          const decodedName = cleanName
+          // Fallback: replace dashes dengan spaces dan capitalize setiap kata
+          let decodedName = cleanName
             .replace(/-/g, ' ')
             .replace(/_/g, ' ')
             .replace(/\s+/g, ' ')
             .trim();
+          
+          // Capitalize each word
+          decodedName = decodedName
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+          
           setGuestName(decodedName);
         }
       } catch (error) {
         console.error('Error loading guest name mapping:', error);
-        const decodedName = cleanName
+        let decodedName = cleanName
           .replace(/-/g, ' ')
           .replace(/_/g, ' ')
           .replace(/\s+/g, ' ')
           .trim();
+        
+        // Capitalize each word
+        decodedName = decodedName
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+        
         setGuestName(decodedName);
       }
     }
