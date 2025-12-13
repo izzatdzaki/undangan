@@ -39,16 +39,25 @@ const GuestManager = () => {
       return;
     }
 
-    // Capitalize nama untuk display yang lebih baik
+    // Capitalize nama untuk display yang lebih baik (preserve special chars)
     const capitalizedName = guestName
       .trim()
-      .split(/(\s+)/)
-      .map((word, idx) => {
-        if (word.match(/\s+/)) return word; // Preserve spaces
-        // Capitalize first letter, keep special chars like comma and periods
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      .split(/\s+/)
+      .map(word => {
+        // Find first letter position
+        let firstLetterIdx = 0;
+        for (let i = 0; i < word.length; i++) {
+          if (/[a-zA-Z]/.test(word[i])) {
+            firstLetterIdx = i;
+            break;
+          }
+        }
+        // Capitalize first letter, keep special chars and lowercase rest
+        return word.substring(0, firstLetterIdx) + 
+               word[firstLetterIdx].toUpperCase() + 
+               word.substring(firstLetterIdx + 1).toLowerCase();
       })
-      .join('');
+      .join(' ');
 
     // Clean nama untuk URL (hapus spasi, special characters, convert ke lowercase)
     const cleanName = guestName
@@ -64,12 +73,23 @@ const GuestManager = () => {
 
     // Capitalize original guest name (with special characters intact)
     const capitalizedOriginalName = guestName
-      .split(/(\s+)/)
-      .map((word, idx) => {
-        if (word.match(/\s+/)) return word;
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      .trim()
+      .split(/\s+/)
+      .map(word => {
+        // Find first letter position
+        let firstLetterIdx = 0;
+        for (let i = 0; i < word.length; i++) {
+          if (/[a-zA-Z]/.test(word[i])) {
+            firstLetterIdx = i;
+            break;
+          }
+        }
+        // Capitalize first letter, keep special chars and lowercase rest
+        return word.substring(0, firstLetterIdx) + 
+               word[firstLetterIdx].toUpperCase() + 
+               word.substring(firstLetterIdx + 1).toLowerCase();
       })
-      .join('');
+      .join(' ');
 
     // Simpan mapping antara clean name dan original name (dengan special characters) ke localStorage
     try {
